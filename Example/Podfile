@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'RxSegue_Example', :exclusive => true do
+  pod "RxSegue", :path => "../"
+end
+
+target 'RxSegue_Tests', :exclusive => true do
+  pod "RxSegue", :path => "../"
+
+  pod 'Quick', '~> 0.8.0'
+  pod 'Nimble', '3.0.0'
+end
