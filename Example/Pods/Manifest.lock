@@ -1,0 +1,30 @@
+PODS:
+  - Nimble (3.0.0)
+  - Quick (0.8.0)
+  - RxCocoa (2.2.0):
+    - RxSwift (~> 2.2)
+  - RxSegue (0.1.0):
+    - RxCocoa (~> 2.0)
+    - RxSwift (~> 2.0)
+  - RxSwift (2.2.0)
+  - SnapKit (0.18.0)
+
+DEPENDENCIES:
+  - Nimble (= 3.0.0)
+  - Quick (~> 0.8.0)
+  - RxSegue (from `../`)
+  - SnapKit
+
+EXTERNAL SOURCES:
+  RxSegue:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
+  Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
+  RxCocoa: 42efb7a7145a8d1d5878e94ce48a580d29e0c796
+  RxSegue: 80355c01c60eb1b1ece851b82b5dce6ee4e0d893
+  RxSwift: b8a749f2204c6c7a5c29b306a9c3bc11d5b87c5b
+  SnapKit: e1f090a6d47b1dd4bd89b73f72b6746a7835ef3c
+
+COCOAPODS: 0.39.0
