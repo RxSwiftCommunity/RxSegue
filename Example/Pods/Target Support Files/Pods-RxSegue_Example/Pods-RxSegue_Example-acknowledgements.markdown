@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## RxSegue
 
-Copyright (c) 2016 sshulga <sergii.shulga@infopulse.com>
+Copyright (c) 2016 sergdort <sergdort@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

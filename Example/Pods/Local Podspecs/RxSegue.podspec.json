@@ -1,27 +1,23 @@
 {
   "name": "RxSegue",
   "version": "0.1.0",
-  "summary": "A short description of RxSegue.",
-  "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/RxSegue",
+  "summary": "Reactive generic segue",
+  "description": "Reactive generic segue.\nImplemented with RxSwift.\nAbstracts navigation logic",
+  "homepage": "https://github.com/sergdort/RxSegue",
   "license": "MIT",
   "authors": {
-    "sshulga": "sergii.shulga@infopulse.com"
+    "sergdort": "sergdort@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/RxSegue.git",
+    "git": "https://github.com/sergdort/RxSegue.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "https://twitter.com/SergDort",
   "platforms": {
     "ios": "8.0"
   },
   "requires_arc": true,
   "source_files": "Pod/Classes/**/*",
-  "resource_bundles": {
-    "RxSegue": [
-      "Pod/Assets/*.png"
-    ]
-  },
   "dependencies": {
     "RxSwift": [
       "~> 2.0"
