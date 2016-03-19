@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "RxSegue"
   s.version          = "0.1.0"
-  s.summary          = "A short description of RxSegue."
+  s.summary          = "Reactive generic segue"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,25 +17,21 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+                        Reactive generic segue.
+                        Implemented with RxSwift.
+                        Abstracts navigation logic
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/RxSegue"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/sergdort/RxSegue"
   s.license          = 'MIT'
-  s.author           = { "sshulga" => "sergii.shulga@infopulse.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/RxSegue.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { "sergdort" => "sergdort@gmail.com" }
+  s.source           = { :git => "https://github.com/sergdort/RxSegue.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/SergDort'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'RxSegue' => ['Pod/Assets/*.png']
-  }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
     s.dependency 'RxSwift', '~> 2.0'
     s.dependency 'RxCocoa', '~> 2.0'
 end

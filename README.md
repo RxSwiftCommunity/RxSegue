@@ -1,6 +1,6 @@
-# RxSegue
+# RxSegue: Reactive generic segue, implemented with RxSwift. Abstracts navigation logic
 
-[![CI Status](http://img.shields.io/travis/sshulga/RxSegue.svg?style=flat)](https://travis-ci.org/sshulga/RxSegue)
+[![Build Status](https://travis-ci.org/sergdort/RxSegue.svg?branch=master)](https://travis-ci.org/sergdort/RxSegue)
 [![Version](https://img.shields.io/cocoapods/v/RxSegue.svg?style=flat)](http://cocoapods.org/pods/RxSegue)
 [![License](https://img.shields.io/cocoapods/l/RxSegue.svg?style=flat)](http://cocoapods.org/pods/RxSegue)
 [![Platform](https://img.shields.io/cocoapods/p/RxSegue.svg?style=flat)](http://cocoapods.org/pods/RxSegue)
@@ -9,7 +9,52 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## Example
+
+```swift
+class ViewController: BaseViewController {
+let disposeBag = DisposeBag()
+@IBOutlet var pushButton: UIButton!
+@IBOutlet var presentButton: UIButton!
+@IBOutlet weak var dismissButton: UIButton!
+
+var voidSegue: ModalSegue<ViewController, SecondViewController, Void> {
+return ModalSegue(fromViewController: self,
+toViewControllerFactory: { (sender, context) -> SecondViewController in
+return SecondViewController()
+})
+}
+
+var profileSegue: NavigationSegue<UINavigationController,
+ProfileViewController,
+ProfileViewModel> {
+return NavigationSegue(fromViewController: self.navigationController!,
+toViewControllerFactory: { (sender, context) -> ProfileViewController in
+let profileViewController: ProfileViewController = ...
+profileViewController.profileViewModel = context
+return profileViewController
+})
+}
+
+override func viewDidLoad() {
+super.viewDidLoad()
+
+presentButton.rx_tap
+.bindTo(voidSegue)
+.addDisposableTo(disposeBag)
+
+pushButton.rx_tap
+.map {
+return ProfileViewModel(name: "John Doe",
+email: "JohnDoe@example.com",
+avatar: UIImage(named: "avatar"))
+}
+.bindTo(profileSegue)
+.addDisposableTo(disposeBag)
+}
+
+}
+```
 
 ## Installation
 
