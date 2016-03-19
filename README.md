@@ -1,5 +1,5 @@
 # RxSegue
-### Reactive generic segue, implemented with RxSwift. 
+### Reactive generic segue, implemented with RxSwift.
 
 [![Build Status](https://travis-ci.org/sergdort/RxSegue.svg?branch=master)](https://travis-ci.org/sergdort/RxSegue)
 [![Version](https://img.shields.io/cocoapods/v/RxSegue.svg?style=flat)](http://cocoapods.org/pods/RxSegue)
@@ -14,45 +14,45 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ```swift
 class ViewController: BaseViewController {
-let disposeBag = DisposeBag()
-@IBOutlet var pushButton: UIButton!
-@IBOutlet var presentButton: UIButton!
-@IBOutlet weak var dismissButton: UIButton!
+    let disposeBag = DisposeBag()
+    @IBOutlet var pushButton: UIButton!
+    @IBOutlet var presentButton: UIButton!
+    @IBOutlet weak var dismissButton: UIButton!
 
-var voidSegue: ModalSegue<ViewController, SecondViewController, Void> {
-return ModalSegue(fromViewController: self,
-toViewControllerFactory: { (sender, context) -> SecondViewController in
-return SecondViewController()
-})
-}
+    var voidSegue: ModalSegue<ViewController, SecondViewController, Void> {
+        return ModalSegue(fromViewController: self,
+            toViewControllerFactory: { (sender, context) -> SecondViewController in
+                return SecondViewController()
+        })
+    }
 
-var profileSegue: NavigationSegue<UINavigationController,
-ProfileViewController,
-ProfileViewModel> {
-return NavigationSegue(fromViewController: self.navigationController!,
-toViewControllerFactory: { (sender, context) -> ProfileViewController in
-let profileViewController: ProfileViewController = ...
-profileViewController.profileViewModel = context
-return profileViewController
-})
-}
+    var profileSegue: NavigationSegue<UINavigationController,
+        ProfileViewController,
+        ProfileViewModel> {
+            return NavigationSegue(fromViewController: self.navigationController!,
+                toViewControllerFactory: { (sender, context) -> ProfileViewController in
+                    let profileViewController: ProfileViewController = ...
+                        profileViewController.profileViewModel = context
+                    return profileViewController
+            })
+    }
 
-override func viewDidLoad() {
-super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-presentButton.rx_tap
-.bindTo(voidSegue)
-.addDisposableTo(disposeBag)
+        presentButton.rx_tap
+            .bindTo(voidSegue)
+            .addDisposableTo(disposeBag)
 
-pushButton.rx_tap
-.map {
-return ProfileViewModel(name: "John Doe",
-email: "JohnDoe@example.com",
-avatar: UIImage(named: "avatar"))
-}
-.bindTo(profileSegue)
-.addDisposableTo(disposeBag)
-}
+        pushButton.rx_tap
+            .map {
+                return ProfileViewModel(name: "John Doe",
+                    email: "JohnDoe@example.com",
+                    avatar: UIImage(named: "avatar"))
+            }
+            .bindTo(profileSegue)
+            .addDisposableTo(disposeBag)
+    }
 
 }
 ```
@@ -68,7 +68,7 @@ pod "RxSegue"
 
 ## Author
 
-[@SergDort](https://twitter.com/sergdort), 
+[@SergDort](https://twitter.com/sergdort),
 
 ## License
 
