@@ -1,8 +1,10 @@
+platform :"ios", "8.0"
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'RxSegue_Example', :exclusive => true do
   pod "RxSegue", :path => "../"
+  pod "SnapKit"
 end
 
 target 'RxSegue_Tests', :exclusive => true do
@@ -10,4 +12,16 @@ target 'RxSegue_Tests', :exclusive => true do
 
   pod 'Quick', '~> 0.8.0'
   pod 'Nimble', '3.0.0'
+end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == 'RxSwift' || target.name == 'RxCocoa'
+            target.build_configurations.each do |config|
+                if config.name == 'Debug'
+                    config.build_settings['OTHER_SWIFT_FLAGS'] = ['$(inherited)', '-D', 'TRACE_RESOURCES']
+                end
+            end
+        end
+    end
 end

@@ -22,7 +22,7 @@ pod "RxSegue"
 
 ## Author
 
-sshulga, sergii.shulga@infopulse.com
+[@SergDort](https://twitter.com/sergdort), 
 
 ## License
 
