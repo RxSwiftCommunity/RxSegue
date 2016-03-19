@@ -1,4 +1,5 @@
-# RxSegue: Reactive generic segue, implemented with RxSwift. Abstracts navigation logic
+# RxSegue
+### Reactive generic segue, implemented with RxSwift. 
 
 [![Build Status](https://travis-ci.org/sergdort/RxSegue.svg?branch=master)](https://travis-ci.org/sergdort/RxSegue)
 [![Version](https://img.shields.io/cocoapods/v/RxSegue.svg?style=flat)](http://cocoapods.org/pods/RxSegue)
