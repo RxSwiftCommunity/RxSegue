@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '76283A09672896E59B07A7FE'
+               BlueprintIdentifier = '23539D7804EA7BBEC0F4DE36'
                BlueprintName = 'RxSegue'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'RxSegue.framework'>

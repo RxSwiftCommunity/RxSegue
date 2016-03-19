@@ -87,11 +87,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-RxSegue_Example/RxCocoa.framework"
   install_framework "Pods-RxSegue_Example/RxSegue.framework"
   install_framework "Pods-RxSegue_Example/RxSwift.framework"
-  install_framework "Pods-RxSegue_Example/SnapKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-RxSegue_Example/RxCocoa.framework"
   install_framework "Pods-RxSegue_Example/RxSegue.framework"
   install_framework "Pods-RxSegue_Example/RxSwift.framework"
-  install_framework "Pods-RxSegue_Example/SnapKit.framework"
 fi

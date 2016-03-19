@@ -7,13 +7,11 @@ PODS:
     - RxCocoa (~> 2.0)
     - RxSwift (~> 2.0)
   - RxSwift (2.3.0)
-  - SnapKit (0.19.1)
 
 DEPENDENCIES:
   - Nimble
   - Quick
   - RxSegue (from `../`)
-  - SnapKit
 
 EXTERNAL SOURCES:
   RxSegue:
@@ -25,6 +23,5 @@ SPEC CHECKSUMS:
   RxCocoa: cde4e993f496d2577bc3ba8b7dc7bf55a4ed809a
   RxSegue: 232a3b65720701ace60bd7373840dadf7a27640e
   RxSwift: 0df59cc5edf28a31dbf83b049220b4b8e76b07c8
-  SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
 
 COCOAPODS: 0.39.0
