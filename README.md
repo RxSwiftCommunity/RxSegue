@@ -1,7 +1,7 @@
 # RxSegue
 ### Reactive generic segue, implemented with RxSwift.
 
-[![Build Status](https://travis-ci.org/sergdort/RxSegue.svg?branch=master)](https://travis-ci.org/sergdort/RxSegue)
+[![Build Status](https://travis-ci.org/RxSwiftCommunity/RxSegue.svg?branch=master)](https://travis-ci.org/RxSwiftCommunity/RxSegue)
 [![Version](https://img.shields.io/cocoapods/v/RxSegue.svg?style=flat)](http://cocoapods.org/pods/RxSegue)
 [![License](https://img.shields.io/cocoapods/l/RxSegue.svg?style=flat)](http://cocoapods.org/pods/RxSegue)
 [![Platform](https://img.shields.io/cocoapods/p/RxSegue.svg?style=flat)](http://cocoapods.org/pods/RxSegue)
@@ -65,10 +65,6 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "RxSegue"
 ```
-
-## Author
-
-[@SergDort](https://twitter.com/sergdort),
 
 ## License
 
