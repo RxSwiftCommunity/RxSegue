@@ -20,12 +20,38 @@ Pod::Spec.new do |s|
                         Reactive generic segue.
                         Implemented with RxSwift.
                         Abstracts navigation logic
+
+```swift
+var profileSegue: NavigationSegue<UINavigationController,
+ProfileViewController,
+ProfileViewModel> {
+   return NavigationSegue(fromViewController: self.navigationController!,
+            toViewControllerFactory: { (sender, context) -> ProfileViewController in
+               let profileViewController: ProfileViewController = ...
+               profileViewController.profileViewModel = context
+               return profileViewController
+         })
+   }
+//----------
+   pushButton.rx_tap
+      .map {
+         return ProfileViewModel(name: "John Doe",
+                  email: "JohnDoe@example.com",
+                  avatar: UIImage(named: "avatar"))
+               }
+               .bindTo(profileSegue)
+               .addDisposableTo(disposeBag)
+
+```
                        DESC
 
-  s.homepage         = "https://github.com/sergdort/RxSegue"
+  s.homepage         = "https://github.com/RxSwiftCommunity/RxSegue.git"
   s.license          = 'MIT'
   s.author           = { "sergdort" => "sergdort@gmail.com" }
-  s.source           = { :git => "https://github.com/sergdort/RxSegue.git", :tag => s.version.to_s }
+  s.source           = {
+                         :git => "https://github.com/RxSwiftCommunity/RxSegue.git",
+                         :tag => s.version.to_s
+                        }
   s.social_media_url = 'https://twitter.com/SergDort'
 
   s.platform     = :ios, '8.0'
