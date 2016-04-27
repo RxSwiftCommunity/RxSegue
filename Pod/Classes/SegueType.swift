@@ -18,11 +18,11 @@ public protocol SegueType: ObserverType {
    /**
     Type of the view controller from which navigation will appear
     */
-    typealias T
+    associatedtype T
    /**
     Type of the target view controller
     */
-    typealias U
+    associatedtype U
    /**
     Represents view controller from which navigation will appear
     */
