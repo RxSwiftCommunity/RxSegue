@@ -12,6 +12,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Example
 
+![RxSegueExample](https://github.com/RxSwiftCommunity/RxSegue/blob/master/RxSegueExample.gif)
+
 ```swift
 class ViewController: BaseViewController {
     let disposeBag = DisposeBag()
@@ -19,22 +21,20 @@ class ViewController: BaseViewController {
     @IBOutlet var presentButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
 
-    var voidSegue: ModalSegue<ViewController, SecondViewController, Void> {
+    var voidSegue: AnyObserver<Void> {
         return ModalSegue(fromViewController: self,
             toViewControllerFactory: { (sender, context) -> SecondViewController in
                 return SecondViewController()
-        })
+        }).asObserver()
     }
 
-    var profileSegue: NavigationSegue<UINavigationController,
-        ProfileViewController,
-        ProfileViewModel> {
+    var profileSegue: AnyObserver<ProfileViewModel> {
             return NavigationSegue(fromViewController: self.navigationController!,
                 toViewControllerFactory: { (sender, context) -> ProfileViewController in
                     let profileViewController: ProfileViewController = ...
                         profileViewController.profileViewModel = context
                     return profileViewController
-            })
+            }).asObserver()
     }
 
     override func viewDidLoad() {
