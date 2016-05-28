@@ -2,11 +2,11 @@ platform :"ios", "8.0"
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'RxSegue_Example', :exclusive => true do
+target 'RxSegue_Example' do
   pod "RxSegue", :path => "../"
 end
 
-target 'RxSegue_Tests', :exclusive => true do
+target 'RxSegue_Tests' do
   pod "RxSegue", :path => "../"
 
   pod 'Quick'
