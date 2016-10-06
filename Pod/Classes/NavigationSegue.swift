@@ -35,7 +35,7 @@ ToViewControllerType: UIViewController, ContextType>: SegueType {
     
     - returns: created and configured view controller
     */
-    public let toViewControllerFactory: (sender: T, context: E) -> U
+    public let toViewControllerFactory: (_ sender: T, _ context: E) -> U
    /**
     Represetns whether transitions should be animated or not
     */
@@ -47,7 +47,7 @@ ToViewControllerType: UIViewController, ContextType>: SegueType {
     - parameter toViewControllerFactory: view controller factory closure, which produces view controller to navigate to
     - parameter animated:                represetns whether transitions should be animated or not    */
     public init(fromViewController: T,
-        toViewControllerFactory: (sender: T, context: E) -> U,
+        toViewControllerFactory: @escaping (_ sender: T, _ context: E) -> U,
         animated: Bool = true) {
             self.fromViewController = fromViewController
             self.toViewControllerFactory = toViewControllerFactory
@@ -58,20 +58,20 @@ ToViewControllerType: UIViewController, ContextType>: SegueType {
     
     - parameter event: Event that occured.
     */
-    public func on(event: Event<E>) {
+    public func on(_ event: Event<E>) {
         MainScheduler.ensureExecutingOnScheduler()
         
         switch event {
-        case .Next(let element):
+        case .next(let element):
             guard let fromVC = fromViewController else {
                 return
             }
-            let toVC = toViewControllerFactory(sender: fromVC, context: element)
+            let toVC = toViewControllerFactory(fromVC, element)
             fromVC.pushViewController(toVC, animated: animated)
-        case .Error(let error):
+        case .error(let error):
             bindingErrorToInterface(error)
             break
-        case .Completed:
+        case .completed:
             break
         }
     }
