@@ -58,6 +58,6 @@ ProfileViewModel> {
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-    s.dependency 'RxSwift', '~> 2.0'
-    s.dependency 'RxCocoa', '~> 2.0'
+    s.dependency 'RxSwift', '3.0.0-beta.1'
+    s.dependency 'RxCocoa', '3.0.0-beta.1'
 end
