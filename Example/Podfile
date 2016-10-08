@@ -4,7 +4,7 @@ use_frameworks!
 
 target 'RxSegue_Example' do
   pod "RxSegue", :path => "../"
-  pod 'RxCocoa', '~> 3.0.0-beta.2'
+  pod 'RxCocoa', '= 3.0.0-beta.2'
 end
 
 target 'RxSegue_Tests' do
