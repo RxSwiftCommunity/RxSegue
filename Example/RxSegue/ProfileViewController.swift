@@ -37,19 +37,20 @@ class ProfileViewController: BaseViewController {
         
         profileViewModel.avatar
             .asObservable()
-            .bindTo(imageView.rx_image)
+            .bindTo(imageView.rx.image)
             .addDisposableTo(disposeBag)
         
         profileViewModel.email
             .asObservable()
-            .bindTo(emailLabel.rx_text)
+            .map(Optional.init)
+            .bindTo(emailLabel.rx.text)
             .addDisposableTo(disposeBag)
         
         profileViewModel.name
             .asObservable()
-            .bindTo(nameLabel.rx_text)
+            .map(Optional.init)
+            .bindTo(nameLabel.rx.text)
             .addDisposableTo(disposeBag)
-        
     }
 
 }

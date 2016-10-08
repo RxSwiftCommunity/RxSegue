@@ -9,14 +9,14 @@
 import UIKit
 import RxSwift
 
-func delay(delay:Double, queue:dispatch_queue_t = dispatch_get_main_queue() , closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        queue, closure)
-}
+//func delay(delay:Double, queue:dispatch_queue_t = dispatch_get_main_queue() , closure:()->()) {
+//    dispatch_after(
+//        dispatch_time(
+//            DISPATCH_TIME_NOW,
+//            Int64(delay * Double(NSEC_PER_SEC))
+//        ),
+//        queue, closure)
+//}
 
 class BaseViewController: UIViewController {
 
@@ -31,9 +31,9 @@ class BaseViewController: UIViewController {
         #if TRACE_RESOURCES
             print("deinit \(self)")
             print("View controller disposed with \(RxSwift.resourceCount) resources")
-            delay(0.1, closure: { () -> () in
-                print("Number of resource after deinit \(RxSwift.resourceCount)")
-            })
+//            delay(0.1, closure: { () -> () in
+//                print("Number of resource after deinit \(RxSwift.resourceCount)")
+//            })
         #endif
     }
 

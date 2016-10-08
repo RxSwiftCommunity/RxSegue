@@ -22,7 +22,7 @@ public protocol RxCollectionViewDataSourceType /*: UICollectionViewDataSource*/ 
     /**
     Type of elements that can be bound to collection view.
     */
-    typealias Element
+    associatedtype Element
     
     /**
     New observable sequence event observed.
@@ -30,7 +30,7 @@ public protocol RxCollectionViewDataSourceType /*: UICollectionViewDataSource*/ 
     - parameter collectionView: Bound collection view.
     - parameter observedEvent: Event
     */
-    func collectionView(collectionView: UICollectionView, observedEvent: Event<Element>) -> Void
+    func collectionView(_ collectionView: UICollectionView, observedEvent: Event<Element>) -> Void
 }
 
 #endif

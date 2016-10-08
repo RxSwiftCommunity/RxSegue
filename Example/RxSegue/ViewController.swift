@@ -17,13 +17,13 @@ struct StoryBoard {
 
 extension UIViewController {
     class var storyboardId: String {
-        return String(self)
+        return String(describing: self)
     }
 }
 
 extension UIStoryboard {
     func instantiateViewController<T: UIViewController>() -> T {
-        guard let viewController = instantiateViewControllerWithIdentifier(T.storyboardId) as? T else {
+        guard let viewController = instantiateViewController(withIdentifier: T.storyboardId) as? T else {
             fatalError("Cast error to \(T.self)")
         }
         return viewController
@@ -56,12 +56,12 @@ class ViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        presentButton.rx_tap
+        
+        presentButton.rx.tap
             .bindTo(voidSegue)
             .addDisposableTo(disposeBag)
         
-        pushButton.rx_tap
+        pushButton.rx.tap
             .map {
                 return ProfileViewModel(name: "John Doe",
                     email: "JohnDoe@example.com",
@@ -70,10 +70,10 @@ class ViewController: BaseViewController {
             .bindTo(profileSegue)
             .addDisposableTo(disposeBag)
         
-        dismissButton.rx_tap
-            .subscribeNext { [weak self] in
-                self?.dismissViewControllerAnimated(true, completion: nil)
-            }
+        dismissButton.rx.tap
+            .subscribe (onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            })
             .addDisposableTo(disposeBag)
     }
 

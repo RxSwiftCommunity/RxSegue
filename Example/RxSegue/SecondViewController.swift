@@ -18,9 +18,9 @@ class SecondViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dismissButton
-            .rx_tap
-            .subscribeNext({ [weak self] in
-                self?.dismissViewControllerAnimated(true, completion: nil)
+            .rx.tap
+            .subscribe(onNext:{ [weak self] in
+                self?.dismiss(animated: true, completion: nil)
             })
             .addDisposableTo(disposeBag)
     }

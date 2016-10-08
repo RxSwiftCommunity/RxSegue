@@ -9,8 +9,10 @@
 import UIKit
 import RxSwift
 
-public struct NavigationSegue<FromViewControllerType: UINavigationController,
-ToViewControllerType: UIViewController, ContextType>: SegueType {
+public struct NavigationSegue<
+    FromViewControllerType: UINavigationController,
+    ToViewControllerType: UIViewController,
+    ContextType>: SegueType {
    /**
     The type of elements in sequence that observer can observe.
     */
