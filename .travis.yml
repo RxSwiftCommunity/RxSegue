@@ -7,9 +7,6 @@ osx_image: xcode8
 xcode_sdk: iphonesimulator10.0
 # cache: cocoapods
 #podfile: Example/Podfile
-before_install:
- - gem install cocoapods # Since Travis is not always on latest version
- - pod install --project-directory=Example
 script:
 - xctool test -workspace Example/RxSegue.xcworkspace -scheme RxSegue-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 #- pod lib lint
