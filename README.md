@@ -40,11 +40,11 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presentButton.rx_tap
+        presentButton.rx.tap
             .bindTo(voidSegue)
             .addDisposableTo(disposeBag)
 
-        pushButton.rx_tap
+        pushButton.rx.tap
             .map {
                 return ProfileViewModel(name: "John Doe",
                     email: "JohnDoe@example.com",
