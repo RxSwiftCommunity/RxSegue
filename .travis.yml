@@ -2,11 +2,8 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-language: objective-c
 osx_image: xcode8
-xcode_sdk: iphonesimulator10.0
-# cache: cocoapods
-#podfile: Example/Podfile
+language: objective-c
 script:
-- xctool test -workspace Example/RxSegue.xcworkspace -scheme RxSegue-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- set -o pipefail && xcodebuild -workspace 'Example/RxSegue.xcworkspace' -scheme 'RxSegue-Example' -configuration 'Debug' -sdk iphonesimulator -destination platform='iOS Simulator',OS='10.0',name='iPhone 7' build test  | xcpretty -c --test
 #- pod lib lint
