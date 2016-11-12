@@ -23,14 +23,14 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         #if TRACE_RESOURCES
-            print("Number of start resources = \(RxSwift.resourceCount)")
+            print("Number of start resources = \(RxSwift.Resources.total)")
         #endif
     }
     
     deinit {
         #if TRACE_RESOURCES
             print("deinit \(self)")
-            print("View controller disposed with \(RxSwift.resourceCount) resources")
+            print("View controller disposed with \(RxSwift.Resources.total) resources")
 //            delay(0.1, closure: { () -> () in
 //                print("Number of resource after deinit \(RxSwift.resourceCount)")
 //            })

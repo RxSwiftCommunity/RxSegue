@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2242BE031CD0DB490072B9AA"
-               BuildableName = "RxSegue-iOS.framework"
+               BuildableName = "RxSegue.framework"
                BlueprintName = "RxSegue-iOS"
                ReferencedContainer = "container:RxSegue.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2242BE031CD0DB490072B9AA"
-            BuildableName = "RxSegue-iOS.framework"
+            BuildableName = "RxSegue.framework"
             BlueprintName = "RxSegue-iOS"
             ReferencedContainer = "container:RxSegue.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2242BE031CD0DB490072B9AA"
-            BuildableName = "RxSegue-iOS.framework"
+            BuildableName = "RxSegue.framework"
             BlueprintName = "RxSegue-iOS"
             ReferencedContainer = "container:RxSegue.xcodeproj">
          </BuildableReference>
