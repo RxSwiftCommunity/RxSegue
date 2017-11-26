@@ -17,12 +17,12 @@ post_install do |installer|
         target.build_configurations.each do |config|
             config.build_settings['SWIFT_VERSION'] = '4.0'
         end
-        if target.name == 'RxSwift' || target.name == 'RxCocoa'
-            target.build_configurations.each do |config|
-                if config.name == 'Debug'
-                    config.build_settings['OTHER_SWIFT_FLAGS'] = ['$(inherited)', '-D', 'TRACE_RESOURCES']
-                end
-            end
-        end
+#        if target.name == 'RxSwift' || target.name == 'RxCocoa'
+#            target.build_configurations.each do |config|
+#                if config.name == 'Debug'
+#                    config.build_settings['OTHER_SWIFT_FLAGS'] = ['$(inherited)', '-D', 'TRACE_RESOURCES']
+#                end
+#            end
+#        end
     end
 end
