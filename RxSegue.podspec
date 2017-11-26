@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RxSegue"
-  s.version          = "1.0.0"
+  s.version          = "2.0.0"
   s.summary          = "Reactive generic segue"
 
 # This description is used to generate tags and improve search results.
@@ -50,5 +50,5 @@ ProfileViewModel> {
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.dependency 'RxSwift', '~> 3.0'
+  s.dependency 'RxSwift', '~> 4.0'
 end
