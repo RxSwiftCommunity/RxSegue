@@ -1,29 +1,28 @@
-platform :"ios", "8.0"
+platform :ios, '8.0'
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'RxSegue_Example' do
-  pod "RxSegue", :path => "../"
-  pod 'RxCocoa', '~> 3.0'
+  pod 'RxSegue', :path => '../'
+  pod 'RxCocoa', '~> 4.0'
 end
 
 target 'RxSegue_Tests' do
-  pod "RxSegue", :path => "../"
-
+  pod 'RxSegue', :path => '../'
   pod 'Nimble'
 end
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '3.0'
+            config.build_settings['SWIFT_VERSION'] = '4.0'
         end
-        if target.name == 'RxSwift' || target.name == 'RxCocoa'
-            target.build_configurations.each do |config|
-                if config.name == 'Debug'
-                    config.build_settings['OTHER_SWIFT_FLAGS'] = ['$(inherited)', '-D', 'TRACE_RESOURCES']
-                end
-            end
-        end
+#        if target.name == 'RxSwift' || target.name == 'RxCocoa'
+#            target.build_configurations.each do |config|
+#                if config.name == 'Debug'
+#                    config.build_settings['OTHER_SWIFT_FLAGS'] = ['$(inherited)', '-D', 'TRACE_RESOURCES']
+#                end
+#            end
+#        end
     end
 end

@@ -2,8 +2,13 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode8
+osx_image: xcode9.1
 language: objective-c
+cache: cocoapods
+podfile: Example/Podfile
+before_install:
+- gem install cocoapods # Since Travis is not always on latest version
+- pod install --project-directory=/Example/
 script:
 - set -o pipefail && xcodebuild -workspace 'Example/RxSegue.xcworkspace' -scheme 'RxSegue-Example' -configuration 'Debug' -sdk iphonesimulator -destination platform='iOS Simulator',OS='10.0',name='iPhone 7' build test  | xcpretty -c --test
 #- pod lib lint
