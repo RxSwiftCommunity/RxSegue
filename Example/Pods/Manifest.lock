@@ -1,16 +1,14 @@
 PODS:
-  - Nimble (3.2.0)
-  - Quick (0.9.1)
-  - RxCocoa (2.3.0):
-    - RxSwift (~> 2.3)
-  - RxSegue (0.1.0):
-    - RxCocoa (~> 2.0)
-    - RxSwift (~> 2.0)
-  - RxSwift (2.3.0)
+  - Nimble (7.0.3)
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxSegue (2.0.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
 
 DEPENDENCIES:
   - Nimble
-  - Quick
+  - RxCocoa (~> 4.0)
   - RxSegue (from `../`)
 
 EXTERNAL SOURCES:
@@ -18,10 +16,11 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
-  Quick: a5221fc21788b6aeda934805e68b061839bc3165
-  RxCocoa: cde4e993f496d2577bc3ba8b7dc7bf55a4ed809a
-  RxSegue: 232a3b65720701ace60bd7373840dadf7a27640e
-  RxSwift: 0df59cc5edf28a31dbf83b049220b4b8e76b07c8
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxSegue: 5a6d41926f293a635bd9d11149b01ee131d0c601
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 69896445c3458ffedfaec7f03c1ed5a2ee398fd6
+
+COCOAPODS: 1.3.1

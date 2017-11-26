@@ -8,7 +8,7 @@
 
 import Foundation
 
-func bindingErrorToInterface(error: ErrorType) {
+func bindingErrorToInterface(_ error: Error) {
     let errorMessage = "Binding error to UI: \(error)"
     #if DEBUG
         fatalError(errorMessage)

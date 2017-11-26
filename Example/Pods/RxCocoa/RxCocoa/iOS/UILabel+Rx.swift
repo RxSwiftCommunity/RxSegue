@@ -8,30 +8,25 @@
 
 #if os(iOS) || os(tvOS)
 
-import Foundation
 #if !RX_NO_MODULE
 import RxSwift
 #endif
 import UIKit
 
-extension UILabel {
+extension Reactive where Base: UILabel {
     
-    /**
-    Bindable sink for `text` property.
-    */
-    public var rx_text: AnyObserver<String> {
-        return UIBindingObserver(UIElement: self) { label, text in
+    /// Bindable sink for `text` property.
+    public var text: Binder<String?> {
+        return Binder(self.base) { label, text in
             label.text = text
-        }.asObserver()
+        }
     }
 
-    /**
-    Bindable sink for `attributedText` property.
-    */
-    public var rx_attributedText: AnyObserver<NSAttributedString?> {
-        return UIBindingObserver(UIElement: self) { label, text in
+    /// Bindable sink for `attributedText` property.
+    public var attributedText: Binder<NSAttributedString?> {
+        return Binder(self.base) { label, text in
             label.attributedText = text
-        }.asObserver()
+        }
     }
     
 }

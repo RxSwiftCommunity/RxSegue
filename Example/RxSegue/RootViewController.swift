@@ -20,11 +20,13 @@ class RootViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
 
-    @IBAction func presentViewController(sender: AnyObject) {
+    @IBAction func presentPressed(sender: AnyObject) {
         let viewController: ViewController = StoryBoard.main.instantiateViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
-        presentViewController(navigationController,
+        present(navigationController,
             animated: true,
             completion: nil)
     }

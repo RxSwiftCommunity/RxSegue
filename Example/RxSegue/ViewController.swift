@@ -17,13 +17,13 @@ struct StoryBoard {
 
 extension UIViewController {
     class var storyboardId: String {
-        return String(self)
+        return String(describing: self)
     }
 }
 
 extension UIStoryboard {
     func instantiateViewController<T: UIViewController>() -> T {
-        guard let viewController = instantiateViewControllerWithIdentifier(T.storyboardId) as? T else {
+        guard let viewController = instantiateViewController(withIdentifier: T.storyboardId) as? T else {
             fatalError("Cast error to \(T.self)")
         }
         return viewController
@@ -36,16 +36,14 @@ class ViewController: BaseViewController {
     @IBOutlet var presentButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
     
-    var voidSegue: ModalSegue<ViewController, SecondViewController, Void> {
+    var voidSegue: AnyObserver<Void> {
         return ModalSegue(fromViewController: self,
             toViewControllerFactory: { (sender, context) -> SecondViewController in
                 return StoryBoard.main.instantiateViewController()
-        })
+        }).asObserver()
     }
     
-    var profileSegue: NavigationSegue<UINavigationController,
-        ProfileViewController,
-        ProfileViewModel> {
+    var profileSegue: AnyObserver<ProfileViewModel> {
         return NavigationSegue(fromViewController: self.navigationController!,
             toViewControllerFactory: { (sender, context) -> ProfileViewController in
                 let profileViewController: ProfileViewController = StoryBoard.main
@@ -53,30 +51,30 @@ class ViewController: BaseViewController {
                 profileViewController.profileViewModel = context
                 
                 return profileViewController
-        })
+        }).asObserver()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        presentButton.rx_tap
-            .bindTo(voidSegue)
-            .addDisposableTo(disposeBag)
         
-        pushButton.rx_tap
+        presentButton.rx.tap
+            .bind(to: voidSegue)
+            .disposed(by: disposeBag)
+        
+        pushButton.rx.tap
             .map {
                 return ProfileViewModel(name: "John Doe",
                     email: "JohnDoe@example.com",
                     avatar: UIImage(named: "avatar"))
             }
-            .bindTo(profileSegue)
-            .addDisposableTo(disposeBag)
+            .bind(to: profileSegue)
+            .disposed(by: disposeBag)
         
-        dismissButton.rx_tap
-            .subscribeNext { [weak self] in
-                self?.dismissViewControllerAnimated(true, completion: nil)
-            }
-            .addDisposableTo(disposeBag)
+        dismissButton.rx.tap
+            .subscribe (onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
 
 }

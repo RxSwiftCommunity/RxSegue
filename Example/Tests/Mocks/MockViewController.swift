@@ -10,7 +10,7 @@ import UIKit
 
 class MockViewController: UIViewController {
     
-    override func presentViewController(viewControllerToPresent: UIViewController,
+    override func present(_ viewControllerToPresent: UIViewController,
         animated flag: Bool,
         completion: (() -> Void)?) {
         completion?()

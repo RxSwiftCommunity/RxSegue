@@ -35,7 +35,7 @@ public struct ModalSegue<FromViewControllerType: UIViewController,
     
     - returns: created and configured view controller
     */
-    public let toViewControllerFactory: (sender: T, context: E) -> U
+    public let toViewControllerFactory: (_ sender: T, _ context: E) -> U
    /**
     Represetns whether transitions should be animated or not
    */
@@ -53,7 +53,7 @@ public struct ModalSegue<FromViewControllerType: UIViewController,
     - parameter presentationCompletion:  completion closure for the modal presentation
     */
     public init(fromViewController: T,
-        toViewControllerFactory: (sender: T, context: E) -> U,
+        toViewControllerFactory: @escaping (_ sender: T, _ context: E) -> U,
         animated: Bool = true,
         presentationCompletion: (() -> Void)? = nil) {
             self.fromViewController = fromViewController
@@ -66,22 +66,22 @@ public struct ModalSegue<FromViewControllerType: UIViewController,
     
     - parameter event: Event that occured.
     */
-    public func on(event: Event<E>) {
+    public func on(_ event: Event<E>) {
         MainScheduler.ensureExecutingOnScheduler()
         
         switch event {
-        case .Next(let element):
+        case .next(let element):
             guard let fromVC = fromViewController else {
                 return
             }
-            let toVC = toViewControllerFactory(sender: fromVC, context: element)
-            fromVC.presentViewController(toVC,
+            let toVC = toViewControllerFactory(fromVC, element)
+            fromVC.present(toVC,
                 animated: animated,
                 completion: presentationCompletion)
-        case .Error(let error):
+        case .error(let error):
             bindingErrorToInterface(error)
             break
-        case .Completed:
+        case .completed:
             break
         }
     }
