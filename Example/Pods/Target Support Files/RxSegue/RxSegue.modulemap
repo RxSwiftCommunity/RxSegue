@@ -1,6 +1,0 @@
-framework module RxSegue {
-  umbrella header "RxSegue-umbrella.h"
-
-  export *
-  module * { export * }
-}
