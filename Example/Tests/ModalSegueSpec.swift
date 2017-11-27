@@ -20,63 +20,71 @@ final class ModalSegueTests: XCTestCase {
         let subject = Observable<Void>.just(Void())
         var sameSender: Bool?
         
-        let segue = ModalSegue<MockViewController, UIViewController, Void>(fromViewController: viewController, toViewControllerFactory: { (sender, _) -> UIViewController in
-            sameSender = viewController === sender
-            return UIViewController()
+        let segue = ModalSegue<MockViewController, UIViewController, Void>(
+            fromViewController: viewController,
+            toViewControllerFactory: { (sender, _) -> UIViewController in
+                sameSender = viewController === sender
+                return UIViewController()
         })
-        
         _ = subject.subscribe(segue)
-        expect(sameSender) != nil
-        expect(sameSender) == true
+        
+        expect(sameSender).toNot(beNil())
+        expect(sameSender).to(beTrue())
     }
     
     func test_ShouldNotCallToViewControllerFactoryForEmptyObservable() {
         let viewController = MockViewController()
         let empty = Observable<Void>.empty()
         var factoryCalled = false
-        let segue = ModalSegue<UIViewController, UIViewController, Void>(fromViewController: viewController,
-                                                                         toViewControllerFactory: { (sender, context) -> UIViewController in
-                                                                            factoryCalled = true
-                                                                            return UIViewController()
+        
+        let segue = ModalSegue<UIViewController, UIViewController, Void>(
+            fromViewController: viewController,
+            toViewControllerFactory: { (sender, context) -> UIViewController in
+                factoryCalled = true
+                return UIViewController()
         })
-        _ = empty
-            .subscribe(segue)
-        expect(factoryCalled) == false
+        _ = empty.subscribe(segue)
+        
+        expect(factoryCalled).to(beFalse())
     }
     
     func test_ShouldNotCallToViewControllerFactoryWithErrorObservable() {
         let viewController = MockViewController()
         let errorObservable = Observable<Void>.error(dummyError)
         var factoryCalled = false
-        let segue = ModalSegue<UIViewController, UIViewController, Void>(fromViewController: viewController,
-                                                                         toViewControllerFactory: { (sender, context) -> UIViewController in
-                                                                            factoryCalled = true
-                                                                            return UIViewController()
-        })
-        _ = errorObservable
-            .subscribe(segue)
         
-        expect(factoryCalled) == false
+        let segue = ModalSegue<UIViewController, UIViewController, Void>(
+            fromViewController: viewController,
+            toViewControllerFactory: { (sender, context) -> UIViewController in
+                factoryCalled = true
+                return UIViewController()
+        })
+        _ = errorObservable.subscribe(segue)
+        
+        expect(factoryCalled).to(beFalse())
     }
     
     func test_ShouldHaveSameContextValue() {
         let viewController = MockViewController()
         var expectedContext: Int?
         let subject = Observable.just(1)
-        let segue = ModalSegue<UIViewController, UIViewController, Int>(fromViewController: viewController,
-                                                                        toViewControllerFactory: { (sender, context) -> UIViewController in
-                                                                            expectedContext = context
-                                                                            return UIViewController()
+        
+        let segue = ModalSegue<UIViewController, UIViewController, Int>(
+            fromViewController: viewController,
+            toViewControllerFactory: { (sender, context) -> UIViewController in
+                expectedContext = context
+                return UIViewController()
         })
-        _ = subject.asObservable()
-            .subscribe(segue)
-        expect(expectedContext) == 1
+        _ = subject.asObservable().subscribe(segue)
+        
+        expect(expectedContext).to(be(1))
     }
     
     func test_ShouldCallCompletionBlock() {
         let viewController = MockViewController()
         let subject = Observable.just(Void())
         var completionCalled = false
+        
         let segue = ModalSegue<MockViewController, UIViewController, Void>(
             fromViewController: viewController,
             toViewControllerFactory: { (sender, context) -> UIViewController in
@@ -86,8 +94,8 @@ final class ModalSegueTests: XCTestCase {
             presentationCompletion: {
                 completionCalled = true
         })
-        _ = subject.asObservable()
-            .subscribe(segue)
-        expect(completionCalled) == true
+        _ = subject.asObservable().subscribe(segue)
+        
+        expect(completionCalled).to(beTrue())
     }
 }
