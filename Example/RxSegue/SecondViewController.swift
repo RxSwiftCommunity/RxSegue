@@ -22,7 +22,7 @@ class SecondViewController: BaseViewController {
             .subscribe(onNext:{ [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
 

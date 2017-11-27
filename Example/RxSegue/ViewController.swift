@@ -58,8 +58,8 @@ class ViewController: BaseViewController {
         super.viewDidLoad()
         
         presentButton.rx.tap
-            .bindTo(voidSegue)
-            .addDisposableTo(disposeBag)
+            .bind(to: voidSegue)
+            .disposed(by: disposeBag)
         
         pushButton.rx.tap
             .map {
@@ -67,14 +67,14 @@ class ViewController: BaseViewController {
                     email: "JohnDoe@example.com",
                     avatar: UIImage(named: "avatar"))
             }
-            .bindTo(profileSegue)
-            .addDisposableTo(disposeBag)
+            .bind(to: profileSegue)
+            .disposed(by: disposeBag)
         
         dismissButton.rx.tap
             .subscribe (onNext: { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
 }
